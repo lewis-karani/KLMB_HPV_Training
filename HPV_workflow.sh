@@ -7,6 +7,9 @@ mkdir -p hpv_project/{{raw,trimmed,reference,results/{alignments,consensus,varia
 cd hpv_project
 
 # 2. Place files:
+for file in {01..24}; do 
+cd barcode$file/ && unpigz * && cat *.fastq > barcode$file.fastq && pigz * && rm FA* && cd ..;
+done
 # - Place raw reads (FASTQ) as barcode01.fastq ... barcodeN.fastq into raw/
 # - Place the HPV16 reference FASTA into reference/hpv16_reference.fasta
 
